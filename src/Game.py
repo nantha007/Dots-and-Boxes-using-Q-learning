@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import random
 from Ai import ai
+from DeepAi import deepai
 
 '''
 States
@@ -28,7 +29,7 @@ class dotsnboxes:
                 if j % 2 == 0 and i % 2 == 0:
                     self.board[i][j] = 1
         self.player = 1
-        self.states = ' ' * (((2*grid_size + 1)**2-1)/2)
+        self.states = ' ' * int(((2*grid_size + 1)**2-1)/2)
 
     def drawBoard(self):
         board = self.board.copy()
@@ -80,7 +81,7 @@ class dotsnboxes:
     def updateState(self, row,col):
         # print('Update states')
         size = self.board.shape[0]
-        id = (row*size + col-1)/2
+        id = int((row*size + col-1)/2)
         # print('id:',id)
         strList = list(self.states)
         # print(strList)

@@ -24,7 +24,7 @@ class ai:
         self.episodeNum = total_episodes
 
     def write2csv(self):
-        with open('qTable' + str(self.grid_size) + '.csv', 'w') as csvfile:
+        with open('../Results/qTable' + str(self.grid_size) + '.csv', 'w') as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(['State', 'Value'])
             allStates = list(self.qTable.keys())
@@ -33,7 +33,7 @@ class ai:
                 writer.writerow([state, self.qTable[state]])
 
     def loadFromCsv(self):
-        reader = csv.reader(open('qTable' + str(self.grid_size) + '.csv', 'r'))
+        reader = csv.reader(open('../Results/qTable' + str(self.grid_size) + '.csv', 'r'))
         for k, v in reader:
             if v == 'Value':
                 # self.qTable[k] = v
@@ -90,7 +90,7 @@ class ai:
 
     def possibleMoves(self, game):
         posStates = list()
-        for i in range(0, ((2*self.grid_size + 1)**2-1)/2):
+        for i in range(0, int(((2*self.grid_size + 1)**2-1)/2)):
             if game.states[i] == ' ':
                 tempBoard = game.states[:i] + str(1) + game.states[i+1:]
                 posStates.append(tempBoard)
